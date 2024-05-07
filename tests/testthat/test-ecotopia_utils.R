@@ -38,26 +38,15 @@ test_that("ecotopia_data_gps_multi_devices", {
     return()
   }
   config$token <- ecotopia_utils_token(config)
-  gps <- ecotopia_data_multi_device(
-    config,
-    "GPS",
-    device_ids = c("61c19791da38d267491633d4", "5d550bf8534ed5fb9d36cc98"),
-    show_progress = "FULL"
+  expect_no_error(
+    ecotopia_data_multi_device(
+      config,
+      "GPS",
+      device_ids = c("61c19791da38d267491633d4", "5d550bf8534ed5fb9d36cc98"),
+      max_requests_per_device = 2,
+      max_results_per_request = 2
+    )
   )
-  print(length(gps))
-  for (i in seq_along(gps)) {
-    cat("变量名：", names(gps)[i], "\n")
-    cat("长度", length(gps[[i]]), "\n")
-  }
-  # expect_no_error(
-  #   ecotopia_data_multi_device(
-  #     config,
-  #     "GPS",
-  #     device_ids = c("61c19791da38d267491633d4", "5d550bf8534ed5fb9d36cc98"),
-  #     max_requests_per_device = 2,
-  #     max_results_per_request = 2
-  #   )
-  # )
 })
 
 test_that("ectopia_data_env_one_device", {

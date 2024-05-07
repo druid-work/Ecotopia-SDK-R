@@ -3,7 +3,7 @@
 #' @param show_progress Show download progress log
 #' show_progress can be "OFF", "SIMPLE" or "FULL"
 #' @param start_time Start time of the data to be downloaded
-#' @return List of devices contain list of vectors with their ACC data.
+#' @return List of devices contains a list of vectors with their ACC data.
 #' @export
 #' @examples
 #' ecotopia_data_devices_acc(
