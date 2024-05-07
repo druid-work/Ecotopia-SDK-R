@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(EcotopiaTools)
+library(Ecotopia-SDK-R)
 
-test_check("EcotopiaTools")
+test_check("Ecotopia-SDK-R")
