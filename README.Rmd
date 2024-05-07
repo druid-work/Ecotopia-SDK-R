@@ -13,20 +13,20 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Ecotopia-SDK-R
+# EcotopiaTools
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of Ecotopia-SDK-R is to provide a set of tools for working with the Ecotopia dataset.
+The goal of EcotopiaTools is to provide a set of tools for working with the Ecotopia dataset.
 
 ## Installation
 
-You can install the development version of Ecotopia-SDK-R like so:
+You can install the development version of EcotopiaTools like so:
 
 ```r
 install.packages("devtools")
-devtools::install_github("yinear/Ecotopia-SDK-R")
+devtools::install_github("yinear/EcotopiaTools")
 ```
 
 ## Example
@@ -41,13 +41,13 @@ token: "token" # optional, if you have a token, you can use it instead of userna
 
 You can get token by running the following code:
 ```r
-library(Ecotopia-SDK-R)
+library(EcotopiaTools)
 token <- ecotopia_user_token()
 ```
 
 Device list can be downloaded by running the following code:
 ```r
-library(Ecotopia-SDK-R)
+library(EcotopiaTools)
 device_list <- ecotopia_data_devices(max_devices = 2)
 ```
 max_devices is the maximum number of devices to download. Default is 1000.
@@ -56,7 +56,7 @@ You can download 4 types of data: `ACC`, `ENV`, `GPS`, and `ODBA`.
 
 You can download the data for a all device by running the following code:
 ```r
-library(Ecotopia-SDK-R)
+library(EcotopiaTools)
 data1 <- ecotopia_data_devices_acc(show_progress = "OFF")
 data2 <- ecotopia_data_devices_env(show_progress = "SIMPLE")
 data3 <- ecotopia_data_devices_gps(show_progress = "FULL")
@@ -66,7 +66,7 @@ show_progress can be “OFF", "SIMPLE", or "FULL". Default is "OFF".
 
 You can also download the data for a specific device by running the following code:
 ```r
-library(Ecotopia-SDK-R)
+library(EcotopiaTools)
 device_ids <- c("device_id1", "device_id2", "device_id3")
 data1 <- ecotopia_data_device_acc(device_ids = device_ids, show_progress = "OFF")
 data2 <- ecotopia_data_device_env(device_ids = device_ids, show_progress = "SIMPLE")
