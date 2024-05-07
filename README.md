@@ -1,21 +1,21 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# EcotopiaTools
+# EcotopiaR
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of EcotopiaTools is to provide a set of tools for working with
+The goal of EcotopiaR is to provide a set of tools for working with
 the Ecotopia dataset.
 
 ## Installation
 
-You can install the development version of EcotopiaTools like so:
+You can install the development version of EcotopiaR like so:
 
 ``` r
 install.packages("devtools")
-devtools::install_github("yinear/EcotopiaTools")
+devtools::install_github("yinear/EcotopiaR")
 ```
 
 ## Example
@@ -33,14 +33,14 @@ token: "token" # optional, if you have a token, you can use it instead of userna
 You can get token by running the following code:
 
 ``` r
-library(EcotopiaTools)
+library(EcotopiaR)
 token <- ecotopia_user_token()
 ```
 
 Device list can be downloaded by running the following code:
 
 ``` r
-library(EcotopiaTools)
+library(EcotopiaR)
 device_list <- ecotopia_data_devices(max_devices = 2)
 ```
 
@@ -53,7 +53,7 @@ You can download the data for a all device by running the following
 code:
 
 ``` r
-library(EcotopiaTools)
+library(EcotopiaR)
 data1 <- ecotopia_data_devices_acc(show_progress = "OFF")
 data2 <- ecotopia_data_devices_env(show_progress = "SIMPLE")
 data3 <- ecotopia_data_devices_gps(show_progress = "FULL")
@@ -66,7 +66,7 @@ You can also download the data for a specific device by running the
 following code:
 
 ``` r
-library(EcotopiaTools)
+library(EcotopiaR)
 device_ids <- c("device_id1", "device_id2", "device_id3")
 data1 <- ecotopia_data_device_acc(device_ids = device_ids, show_progress = "OFF")
 data2 <- ecotopia_data_device_env(device_ids = device_ids, show_progress = "SIMPLE")
