@@ -1,0 +1,6 @@
+# Either the token can have a value, or the username and password must have values.
+# Please leave an empty line at the end of the file to avoid errors.
+domain: "ecotopia-v1.company.druidtech.net"
+username: "abc"
+password: "bbc"
+token: "v=1;id=60bf2fa6aca33b065f6d4d7d;n=clsmvbt3;expiry=2024-05-19T18:02:07Z;hmac=yCpNeY71GS1kxvOGp9Bk-BzkCsR3zHA6u7OxbzE6D_s="
