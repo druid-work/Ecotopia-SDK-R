@@ -1,5 +1,5 @@
 #' Get devices' GPS data from Ecotopia API
-#' @param device_ids Device IDs to get data from
+#' @param device_uuids Device UUIDs to get data from
 #' @param show_progress Show download progress log
 #' show_progress can be "OFF", "SIMPLE" or "FULL"
 #' @param start_time Start time of the data to be downloaded
@@ -11,12 +11,12 @@
 #'   show_progress = "SIMPLE"
 #' )
 ecotopia_data_devices_gps <- function(
-  device_ids, show_progress = "OFF", start_time = NULL
+  device_uuids, show_progress = "OFF", start_time = NULL
 ) {
   return(ecotopia_data_type_devices(
     type = "GPS",
     show_progress = show_progress,
-    device_ids = device_ids,
+    device_ids = device_uuids,
     start_time = start_time
   ))
 }

@@ -4,10 +4,14 @@
 \alias{ecotopia_data_devices_acc}
 \title{Get devices' ACC data from Ecotopia API}
 \usage{
-ecotopia_data_devices_acc(device_ids, show_progress = "OFF", start_time = NULL)
+ecotopia_data_devices_acc(
+  device_uuids,
+  show_progress = "OFF",
+  start_time = NULL
+)
 }
 \arguments{
-\item{device_ids}{Device IDs to get data from}
+\item{device_uuids}{Device UUIDs to get data from}
 
 \item{show_progress}{Show download progress log
 show_progress can be "OFF", "SIMPLE" or "FULL"}
@@ -15,7 +19,7 @@ show_progress can be "OFF", "SIMPLE" or "FULL"}
 \item{start_time}{Start time of the data to be downloaded}
 }
 \value{
-List of devices contain list of vectors with their ACC data.
+List of devices contains a list of vectors with their ACC data.
 }
 \description{
 Get devices' ACC data from Ecotopia API

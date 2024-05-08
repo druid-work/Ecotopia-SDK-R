@@ -10,11 +10,10 @@ ecotopia_data_all_acc(show_progress = "OFF", start_time = NULL)
 \item{show_progress}{Show download progress log
 show_progress can be "OFF", "SIMPLE" or "FULL"}
 
-\item{start_time}{Start time of the data to be downloaded
-show_progress can be "OFF", "SIMPLE" or "FULL"}
+\item{start_time}{Start time of the data to be downloaded}
 }
 \value{
-List of all devices contain list of vectors with their ACC data.
+List of all devices contains a list of vectors with their ACC data.
 }
 \description{
 Get all ACC data from Ecotopia API

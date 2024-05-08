@@ -4,10 +4,14 @@
 \alias{ecotopia_data_devices_env}
 \title{Get devices' ENV data from Ecotopia API}
 \usage{
-ecotopia_data_devices_env(device_ids, show_progress = "OFF", start_time = NULL)
+ecotopia_data_devices_env(
+  device_uuids,
+  show_progress = "OFF",
+  start_time = NULL
+)
 }
 \arguments{
-\item{device_ids}{Device IDs to get data from}
+\item{device_uuids}{Device UUIDs to get data from}
 
 \item{show_progress}{Show download progress log
 show_progress can be "OFF", "SIMPLE" or "FULL"}
