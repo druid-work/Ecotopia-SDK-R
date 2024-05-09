@@ -1,3 +1,6 @@
 ^LICENSE\.md$
-tests/testthat/ecotopia.yml
 ^README\.Rmd$
+
+tests/testthat/ecotopia.yml
+^examples/$
+^ecotopia\.yml$
