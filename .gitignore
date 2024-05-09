@@ -51,4 +51,5 @@ rsconnect/
 .DS_Store
 
 /examples/*.png
+/examples/*.csv
 /ecotopia.yml
