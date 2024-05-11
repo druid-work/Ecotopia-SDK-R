@@ -1,4 +1,4 @@
-# Bar chart of inner pressure
+# Chart of inner temperature and inner pressure
 # Import EcotopiaR
 library(EcotopiaR)
 library(ggplot2)
@@ -13,10 +13,12 @@ data_list <- ecotopia_data_devices_env(
   start_time = start_time
 )
 data <- data_list[["5d395935879cb58613e59e76"]]
+data$inner_temperature <- as.numeric(data$inner_temperature)
 data$inner_pressure <- as.numeric(data$inner_pressure)
-# Bar chart of inner pressure
-plot <- ggplot(data, aes(x = inner_pressure)) +
-  geom_bar(fill = "orange", color = "black", position = "dodge") +
-  labs(title = "Inner Pressure Distribution",
-       x = "Inner Pressure", y = "Frequency")
-ggsave("examples/env_pressure_bar.png", plot)
+# Bar chart of inner temperature
+plot <- ggplot(data, aes(x = inner_temperature, y = inner_pressure)) +
+  geom_point(color = "green") +
+  geom_smooth(method = "lm") +
+  labs(title = "Inner Temperature And Pressure",
+       x = "Inner Temperature", y = "Inner Pressure")
+ggsave("examples/env_temperature_pressure_point.png", plot)

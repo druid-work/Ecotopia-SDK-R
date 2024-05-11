@@ -1,4 +1,4 @@
-# Bar chart of signal strength
+# Bar chart of inner pressure
 # Import EcotopiaR
 library(EcotopiaR)
 library(ggplot2)
@@ -13,10 +13,10 @@ data_list <- ecotopia_data_devices_env(
   start_time = start_time
 )
 data <- data_list[["5d395935879cb58613e59e76"]]
-data$signal_strength <- as.numeric(data$signal_strength)
-# Bar chart of signal strength
-plot_signal <- ggplot(data, aes(x = signal_strength)) +
-  geom_bar(fill = "skyblue", color = "black", position = "dodge") +
-  labs(title = "Signal Strength Distribution",
-       x = "Signal Strength", y = "Frequency")
-ggsave("examples/env_signal_bar.png", plot_signal)
+data$inner_pressure <- as.numeric(data$inner_pressure)
+# Bar chart of inner pressure
+plot <- ggplot(data, aes(x = inner_pressure)) +
+  geom_boxplot() +
+  labs(title = "Inner Pressure Box Plot",
+       x = "Inner Pressure")
+ggsave("examples/env_pressure_box.png", plot)

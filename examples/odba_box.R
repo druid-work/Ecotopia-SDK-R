@@ -5,7 +5,7 @@ library(ggplot2)
 # Query data in 2 days
 now <- Sys.time()
 attr(now, "tzone") <- "UTC"
-start_time <- now - as.difftime(2, unit = "days")
+start_time <- now - as.difftime(100, unit = "days")
 # Request data by EcotopiaR
 data_list <- ecotopia_data_devices_odba(
   # The device uuid can be viewed in the list of devices
@@ -15,10 +15,9 @@ data_list <- ecotopia_data_devices_odba(
   start_time = start_time
 )
 data <- data_list[["5d395935879cb58613e59e76"]]
-data <- data[order(data$timestamp), ]
-data$timestamp_order <- seq_len(nrow(data))
+data$odba <- as.numeric(data$odba)
 # Draw
-plot <- ggplot(data, aes(x = timestamp_order, y = odba)) +
-  geom_boxplot(fill = "skyblue", color = "blue") +
-  labs(title = "ODBA Box", x = "Time", y = "ODBA")
+plot <- ggplot(data, aes(x = odba)) +
+  geom_boxplot() +
+  labs(title = "ODBA Box", x = "ODBA")
 ggsave("examples/odba_box.png", plot)

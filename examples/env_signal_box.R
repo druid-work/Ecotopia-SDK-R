@@ -16,7 +16,7 @@ data <- data_list[["5d395935879cb58613e59e76"]]
 data$signal_strength <- as.numeric(data$signal_strength)
 # Bar chart of signal strength
 plot_signal <- ggplot(data, aes(x = signal_strength)) +
-  geom_bar(fill = "skyblue", color = "black", position = "dodge") +
-  labs(title = "Signal Strength Distribution",
-       x = "Signal Strength", y = "Frequency")
-ggsave("examples/env_signal_bar.png", plot_signal)
+  geom_boxplot() +
+  labs(title = "Signal Strength Box Plot",
+       x = "Signal Strength")
+ggsave("examples/env_signal_box.png", plot_signal)

@@ -20,7 +20,7 @@ devtools::install_github("yinear/EcotopiaR")
 
 ## Example
 
-First, create a config file named `ecotppia.yml` in the working
+First, create a config file named `ecotopia.yml` in the working
 directory. The config file should contain the following information:
 
 ``` yml

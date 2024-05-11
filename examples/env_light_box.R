@@ -4,7 +4,7 @@ library(EcotopiaR)
 library(ggplot2)
 now <- Sys.time()
 attr(now, "tzone") <- "UTC"
-start_time <- now - as.difftime(100, unit = "days")
+start_time <- now - as.difftime(10, unit = "days")
 data_list <- ecotopia_data_devices_env(
   # The device uuid can be viewed in the list of devices
   # obtained through ecotopia_data_devices.
@@ -17,7 +17,8 @@ data$ambient_light <- as.numeric(data$ambient_light)
 data$ambient_light <- data$ambient_light %/% 1000 * 1000
 # Bar chart of ambient light
 plot <- ggplot(data, aes(x = ambient_light)) +
-  geom_bar(fill = "orange", color = "black", position = "dodge") +
-  labs(title = "Ambient Light Distribution",
-       x = "Ambient Light", y = "Frequency")
-ggsave("examples/env_light_bar.png", plot)
+  geom_boxplot() +
+  labs(title = "Ambient Light Box Plot",
+       x = "Ambient Light")
+
+ggsave("examples/env_light_box.png", plot)

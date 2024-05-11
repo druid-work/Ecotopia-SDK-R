@@ -1,4 +1,4 @@
-# Bar chart of ambient light
+# Chart of inner temperature and inner pressure
 # Import EcotopiaR
 library(EcotopiaR)
 library(ggplot2)
@@ -13,11 +13,12 @@ data_list <- ecotopia_data_devices_env(
   start_time = start_time
 )
 data <- data_list[["5d395935879cb58613e59e76"]]
+data$inner_temperature <- as.numeric(data$inner_temperature)
 data$ambient_light <- as.numeric(data$ambient_light)
-data$ambient_light <- data$ambient_light %/% 1000 * 1000
-# Bar chart of ambient light
-plot <- ggplot(data, aes(x = ambient_light)) +
-  geom_bar(fill = "orange", color = "black", position = "dodge") +
-  labs(title = "Ambient Light Distribution",
-       x = "Ambient Light", y = "Frequency")
-ggsave("examples/env_light_bar.png", plot)
+# Bar chart of inner temperature
+plot <- ggplot(data, aes(x = inner_temperature, y = ambient_light)) +
+  geom_point(color = "green") +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(title = "Inner Temperature And Ambient Light",
+       x = "Inner Temperature", y = "AmbientLight")
+ggsave("examples/env_temperature_light_point.png", plot)
