@@ -6,10 +6,11 @@ theme_set(theme_bw())
 library("sf")
 library("rnaturalearth")
 library("rnaturalearthdata")
+library("dplyr")
 
 now <- Sys.time()
 attr(now, "tzone") <- "UTC"
-start_time <- now - as.difftime(495, unit = "days")
+start_time <- now - as.difftime(365, unit = "days")
 
 gps_list <- ecotopia_data_devices_gps(
   device_uuids = c("5d395935879cb58613e59e76",
@@ -29,14 +30,23 @@ map <- ggplot(data = world) +
         panel.background = element_rect(fill = "aliceblue")) +
   coord_sf(xlim = c(0, 75), ylim = c(5, 70), expand = FALSE) +
   ggtitle("GPS Tracking")
-colors <- c("red", "blue", "green", "orange", "purple")
-for (i in seq_along(gps_list)) {
-  gps <- gps_list[[i]]
-  gps <- gps[gps$used_star > 3, ]
-  gps$longitude <- as.numeric(gps$longitude)
-  gps$latitude <- as.numeric(gps$latitude)
-  gps_plot <- geom_point(data = gps, aes(x = longitude, y = latitude),
-                         color = colors[i], size = 2)
-  map <- map + gps_plot
-}
+
+
+gps_df <- lapply(gps_list, function(df) {
+  if (nrow(df) == 0) {
+    return(NULL)
+  }
+  df <- select(df, device_id, used_star, longitude, latitude)
+  return(df)
+})
+gps <- do.call(rbind, gps_df)
+
+gps <- gps[gps$used_star > 3, ]
+gps$longitude <- as.numeric(gps$longitude)
+gps$latitude <- as.numeric(gps$latitude)
+gps$Device_Id <- sapply(gps$device_id, function(x) {
+  substr(x, nchar(x) - 3, nchar(x))
+})
+map <- map + geom_point(data = gps, aes(x = longitude, y = latitude,
+                                        color = Device_Id), size = 2)
 ggsave("examples/gps_map_multi_devices.png", map)
