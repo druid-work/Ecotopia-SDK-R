@@ -1,13 +1,11 @@
-# Draw ODBA Density Graph
+# Bar chart of inner pressure
 # Import EcotopiaR
 library(EcotopiaR)
 library(ggplot2)
-# Query data in 2 days
 now <- Sys.time()
 attr(now, "tzone") <- "UTC"
 start_time <- now - as.difftime(100, unit = "days")
-# Request data by EcotopiaR
-data_list <- ecotopia_data_devices_odba(
+data_list <- ecotopia_data_devices_env(
   # The device uuid can be viewed in the list of devices
   # obtained through ecotopia_data_devices.
   device_uuids = c("5d395935879cb58613e59e76"),
@@ -15,10 +13,10 @@ data_list <- ecotopia_data_devices_odba(
   start_time = start_time
 )
 data <- data_list[["5d395935879cb58613e59e76"]]
-data$odba <- as.numeric(data$odba)
-# Draw
-plot <- ggplot(data, aes(x = odba)) +
+data$inner_pressure <- as.numeric(data$inner_pressure)
+# Bar chart of inner pressure
+plot <- ggplot(data, aes(x = inner_pressure)) +
   geom_density(fill = "blue", alpha = 0.5) +
-  labs(title = "ODBA Density Distribution",
-       x = "ODBA", y = "Density")
-ggsave("examples/odba_density.png", plot)
+  labs(title = "Inner Pressure Density Distribution",
+       x = "Inner Pressure", y = "Density")
+ggsave("examples/env_pressure_density.png", plot)
